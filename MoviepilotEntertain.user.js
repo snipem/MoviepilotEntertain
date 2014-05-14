@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           MoviepilotEntertain
 // @namespace      https://github.com/snipem/MoviepilotEntertain
-// @description    A JavaScript Userscript for searching Telekom Entertain EPG from Moviepilot
+// @description    A user script for searching Telekom Entertain EPG from Moviepilot
 // @include        http://www.moviepilot.de/*
 // ==/UserScript==
 
@@ -11,10 +11,11 @@ var indexOfMovies = url.indexOf('moviepilot.de/movies/');
 
 if (indexOfTv > 0)
 {
-	//When showing tv schedule
+	//When showing the tv schedule
  	for (var i=0; i<document.getElementsByTagName('h3').length; i++) 
  	{
-		var movieNumber = i; movieName = document.getElementsByTagName('h3')[movieNumber].getElementsByTagName('a')[0].text;
+		var movieNumber = i; 
+		movieName = document.getElementsByTagName('h3')[movieNumber].getElementsByTagName('a')[0].text;
 		var link = document.createElement('a');
 		link.setAttribute('href','https://www.entertain-to-go.de/dt/pctv/main/#page=search.searchterm&searchTerm='+movieName+'&tab=tv');
 		link.innerHTML = 'Entertain';
@@ -23,8 +24,8 @@ if (indexOfTv > 0)
 }
 else if (indexOfMovies > 0)
 {
-	//When not showing indexOfTv
-	var movieName = movieName = document.getElementsByTagName('h1')[0].innerHTML.trim();
+	//When showing a single movie entry
+	var movieName = document.getElementsByTagName('h1')[0].innerHTML.trim();
 	var link = document.createElement('a');
 	link.setAttribute('href','https://www.entertain-to-go.de/dt/pctv/main/#page=search.searchterm&searchTerm='+movieName+'&tab=tv');
 	link.innerHTML = 'Entertain';
